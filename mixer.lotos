@@ -1,0 +1,26 @@
+specification mixer[ar,br,cr,aa,ba,ca]: noexit
+	behaviour
+		hide l1,l2 in
+		(passive[ar,aa,l1,l2,cr,ca]|[l1,l2]|passive[br,ba,l2,l1,cr,ca])
+	where
+	process active[cr,ca,l,y]: exit :=
+		(l; cr; ca; y; exit)
+		[]
+		(y; active[cr,ca,l,y])
+	endproc
+	
+	process ack[a,y]: exit :=
+		(y; ack[a,y])
+		[]
+		(a; exit)
+	endproc
+	
+	process passive[r,a,l,y,cr,ca]: noexit :=
+		(r; active[cr,ca,l,y] >> ack[a,y] >> passive[r,a,l,y,cr,ca])
+		[]
+		(y; passive[r,a,l,y,cr,ca])
+		[]
+		(l; passive[r,a,l,y,cr,ca])
+	endproc
+endspec
+
