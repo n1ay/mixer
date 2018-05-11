@@ -1,0 +1,87 @@
+specification P_0[AR,AA,BR,BA,CR,CA]:noexit
+behaviour
+P_0[AR,AA,BR,BA,CR,CA]
+where
+process P_0[AR,AA,BR,BA,CR,CA] :noexit :=
+   AR;
+      P_1[AR,AA,BR,BA,CR,CA]
+   []
+   BR;
+      P_2[AR,AA,BR,BA,CR,CA]
+endproc
+process P_1[AR,AA,BR,BA,CR,CA] :noexit :=
+   BR;
+      P_3[AR,AA,BR,BA,CR,CA]
+   []
+   CR;
+      P_4[AR,AA,BR,BA,CR,CA]
+endproc
+process P_2[AR,AA,BR,BA,CR,CA] :noexit :=
+   AR;
+      P_3[AR,AA,BR,BA,CR,CA]
+   []
+   CR;
+      P_5[AR,AA,BR,BA,CR,CA]
+endproc
+process P_3[AR,AA,BR,BA,CR,CA] :noexit :=
+   CR;
+      P_6[AR,AA,BR,BA,CR,CA]
+endproc
+process P_4[AR,AA,BR,BA,CR,CA] :noexit :=
+   BR;
+      P_6[AR,AA,BR,BA,CR,CA]
+   []
+   CA;
+      P_8[AR,AA,BR,BA,CR,CA]
+endproc
+process P_5[AR,AA,BR,BA,CR,CA] :noexit :=
+   AR;
+      P_6[AR,AA,BR,BA,CR,CA]
+   []
+   CA;
+      P_9[AR,AA,BR,BA,CR,CA]
+endproc
+process P_6[AR,AA,BR,BA,CR,CA] :noexit :=
+   CA;
+      P_10[AR,AA,BR,BA,CR,CA]
+endproc
+process P_8[AR,AA,BR,BA,CR,CA] :noexit :=
+   AA;
+      P_0[AR,AA,BR,BA,CR,CA]
+   []
+   BR;
+      P_10[AR,AA,BR,BA,CR,CA]
+endproc
+process P_9[AR,AA,BR,BA,CR,CA] :noexit :=
+   AR;
+      P_10[AR,AA,BR,BA,CR,CA]
+   []
+   BA;
+      P_0[AR,AA,BR,BA,CR,CA]
+endproc
+process P_10[AR,AA,BR,BA,CR,CA] :noexit :=
+   AA;
+      P_2[AR,AA,BR,BA,CR,CA]
+   []
+   BA;
+      P_1[AR,AA,BR,BA,CR,CA]
+   []
+   CR;
+      (AA;
+	 P_5[AR,AA,BR,BA,CR,CA]
+	 []
+      BA;
+	 P_4[AR,AA,BR,BA,CR,CA]
+      []
+      CA;
+	 P_14[AR,AA,BR,BA,CR,CA]
+      )
+endproc
+process P_14[AR,AA,BR,BA,CR,CA] :noexit :=
+   AA;
+      P_9[AR,AA,BR,BA,CR,CA]
+   []
+   BA;
+      P_8[AR,AA,BR,BA,CR,CA]
+endproc
+endspec
