@@ -42,11 +42,11 @@
 \includegraphics[scale=0.7]{cd}
 \end{figure}
 
-Mixer jest kompenentem z trzema dwufazowymi portami: dwoma pasywnymi i jednym aktywnym. Request z wejść pasywnych zostaje przeniesiony na port aktywny. Kiedy przychodzi żądanie na port pasywny i mixer nie jest zajęty obsługą innego żądania, przychodzące żądanie zostaje przeniesione na port aktywny (port aktywny staje się \textit{busy} -- zajęty). Gdy port aktywny otrzyma \textit{ack}, port pasywny, z którego żądanie zostało przeniesione także otrzymuje \textit{ack} i~przechodzi w stan bezczynności (\textit{idle}).
+Mixer jest komponentem z trzema dwufazowymi portami: dwoma pasywnymi i jednym aktywnym. \textit{Request} z wejść pasywnych zostaje przeniesiony na port aktywny. Kiedy przychodzi żądanie na port pasywny i mixer nie jest zajęty obsługą innego żądania, przychodzące żądanie zostaje przeniesione na port aktywny (port aktywny staje się \textit{busy}). Gdy port aktywny otrzyma \textit{ack}, port pasywny, z którego żądanie zostało przeniesione także otrzymuje \textit{ack} i~przechodzi w~stan bezczynności (\textit{idle}).
 \\\\
 Żądanie przychodzące na port pasywny, gdy mixer jest w stanie \textit{busy} (przetwarza żądanie z~drugiego portu pasywnego) nie jest gubione, lecz zostaje obsłużone, gdy mixer będzie bezczynny.
 \\\\
-Gdy mixer otrzymuje żadania na obu portach jednocześnie, przetworzy najpierw jedno z nich, a drugie później -- wybór żądania jest dowolny. Narzucona jest własność sprawiedliwości -- przy nieskończonej ilości takch sytuacji każdy portów powinien zostać obsłużony nieskończoną ilość razy.
+Gdy mixer otrzymuje żadania na obu portach jednocześnie, przetworzy najpierw jedno z nich, a drugie później -- wybór żądania jest dowolny. Narzucona jest własność sprawiedliwości -- przy nieskończonej ilości takich sytuacji każdy z portów powinien zostać obsłużony nieskończoną ilość razy.
 
 \section*{Specyfikacja w języku LOTOS}
 \begin{lstlisting}
