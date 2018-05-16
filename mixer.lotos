@@ -1,14 +1,22 @@
 specification mixer[ar,br,cr,aa,ba,ca]: noexit
 	behaviour
-		hide l,u in
-		(passive[ar,aa,l,u]|||passive[br,ba,l,u])|[l,u]|active[cr,ca,l,u]
+		hide a0,a1,s,b0,b1 in
+		(passive[ar,aa,a0,a1]|||passive[br,ba,b0,b1])|[a0,a1,b0,b1]|(trigger[a0,b0,s]|[s]|active[cr,ca,s,a1,b1])
 	where
-	process active[cr,ca,l,u]: noexit :=
-		(l; cr; ca; u; active[cr,ca,l,u])
+	process active[cr,ca,s,a1,b1]: noexit :=
+		(s; cr; ca; a1; active[cr,ca,s,a1,b1])
+		[]
+		(s; cr; ca; b1; active[cr,ca,s,a1,b1])
 	endproc
 	
-	process passive[r,a,l,u]: noexit :=
-		r; l; u; a; passive[r,a,l,u]
+	process trigger[a0,b0,s]: noexit :=
+		(a0; s; trigger[a0,b0,s])
+		[]
+		(b0; s; trigger[a0,b0,s])
+	endproc
+	
+	process passive[req,ack,s0,s1]: noexit :=
+		req; s0; s1; ack; passive[req,ack,s0,s1]
 	endproc
 endspec
 
