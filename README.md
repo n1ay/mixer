@@ -9,4 +9,6 @@ In contrast to a Non-Receptive Mixer, the environment of a Mixer need not guaran
 
  > When a Mixer receives requests on both passive ports, it will process exactly one of them (and delay the other). The specification leaves the choice open. Often there is a fairness requirement on this choice: if a choice situation arises "infinitely often" then both outputs are chosen "infinitely often".
 
+![Mixer XDI graph](https://raw.githubusercontent.com/n1ay/mixer/master/mixer.jpg)
+
 Specification source:[ http://edis.win.tue.nl/sys/mixer/index.html](http://edis.win.tue.nl/sys/mixer/index.html)
